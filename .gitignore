@@ -3,3 +3,4 @@ output/*
 pelican-plugins
 *.pid
 *.pyc
+src

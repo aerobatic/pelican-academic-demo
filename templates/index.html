@@ -5,24 +5,24 @@
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      This is the jumbotron content! asfdasdf
+      <h1>Pelican Academic</h1>
     </div>
   </div>
 {% endblock %}
 
 {% block index_content %}
-  {{ widgets.about_me('Lena Smith', job_title="Artificial Intelligence", works_for="Stanford University", articles=articles_page.object_list) }}
+  {{ widgets.profile(
+    full_name="Albus Dumbledore",
+    job_title="Headmaster, Professor of Transfiguration",
+    works_for="Hogwarts School of Witchcraft & Wizardry",
+    email_address="test@example.org",
+    network_urls={
+      "google_scholar": "https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ",
+      "twitter": "https://twitter.com/aerobaticapp",
+      "github": "https://github.com/aerobatic/pelican-academic"
+    },
+    articles=articles_page.object_list)
+  }}
 
-  {% block biography %}
-    {% for article in articles_page.object_list %}
-      <p>{{ article.slug }}</p>
-    {% endfor %}
-  {% endblock %}
-
-  {% block social_icons %}twitter, google{% endblock %}
-
-  <h2>Hey this is the custom theme homepage</h2>
   {{publications_section()}}
-
-  CHANGED!! How about this??
 {% endblock %}

@@ -11,6 +11,9 @@ SITEURL = ''
 THEME = 'pelican-academic'
 PATH = 'content'
 
+# Set this so autoreload will detect changes to templates
+STATIC_PATHS = ['images']
+
 LOAD_CONTENT_CACHE = False
 TIMEZONE = 'America/Los_Angeles'
 
@@ -18,8 +21,8 @@ DEFAULT_LANG = u'en'
 
 THEME_TEMPLATES_OVERRIDES = ['templates']
 
-# Set this so autoreload will detect changes to templates
-STATIC_PATHS = ['templates']
+
+ARTICLE_EXCLUDES = ['content/widgets']
 
 # PLUGIN_PATHS = ['themes/pelican-academic/plugins']
 # PLUGIN_PATHS = ['pelican-plugins']
