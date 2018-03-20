@@ -4,3 +4,7 @@ pelican-plugins
 *.pid
 *.pyc
 src
+pyvenv.cfg
+pip-selfcheck.json
+bin
+lib

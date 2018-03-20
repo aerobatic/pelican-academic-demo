@@ -1,7 +1,11 @@
-{% extends "!theme/index.html" %}
-{% import 'widgets.html' as widgets %}
+{% extends "base.html" %}
+{% from "widgets/profile.html" import profile %}
+{% from "widgets/biography.html" import biography %}
+{% from "widgets/interests.html" import interests %}
+{% from "widgets/education.html" import education %}
+{% from "widgets/article_summary.html" import article_summary %}
 
-{% block index_precontent %}
+{% block banner %}
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -10,19 +14,51 @@
   </div>
 {% endblock %}
 
-{% block index_content %}
-  {{ widgets.profile(
-    full_name="Albus Dumbledore",
-    job_title="Headmaster, Professor of Transfiguration",
-    works_for="Hogwarts School of Witchcraft & Wizardry",
-    email_address="test@example.org",
-    network_urls={
-      "google_scholar": "https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ",
-      "twitter": "https://twitter.com/aerobaticapp",
-      "github": "https://github.com/aerobatic/pelican-academic"
-    },
-    articles=articles_page.object_list)
-  }}
+{% block content %}
+  <div class="row">
+    <div class="col-md-4">
+      {{ profile(
+        full_name="Albus Dumbledore",
+        job_title="Headmaster, Professor of Transfiguration",
+        works_for="Hogwarts School of Witchcraft & Wizardry",
+        email_address="test@example.org",
+        network_urls={
+          "google_scholar": "https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ",
+          "twitter": "https://twitter.com/aerobaticapp",
+          "github": "https://github.com/aerobatic/pelican-academic"
+        }
+      )}}
+    </div>
+    <div class="col-md-8">
+      {{ biography(articles, "biography")}}
+      <div class="row">
+        <div class="col-sm-6">
+          {{ interests([
+            "Transfiguration",
+            "Witchcraft and Wizardry",
+            "Spell-casting",
+            "Collecting of curious instruments"
+          ])}}
+        </div>
+        <div class="col-sm-6">
+          {{ education([
+            ("Transfiguration", "Hogwarts School of Wizardry")
+          ])}}
+        </div>
+      </div>
+    </div>
+  </div>
 
-  {{publications_section()}}
+  <section>
+    <div class="row">
+      <div class="col-xs-12 col-md-4 section-heading">
+        <h3>Selected Publications</h3>
+      </div>
+      <div class="col-xs-12 col-md-8">
+        {% for article in articles | selectattr('title', 'in', ('Mobile visual clothing search')) %}
+          {{article_summary(article)}}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 {% endblock %}

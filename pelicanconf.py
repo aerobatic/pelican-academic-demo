@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
-from pelican.readers import Markdown
-import markdown
+# from __future__ import unicode_literals
+# from pelican.readers import Markdown
+# import markdown
 
 AUTHOR = u'David Von Lehman'
 SITENAME = u'PELICAN ACADEMIC'
@@ -11,8 +11,12 @@ SITEURL = ''
 THEME = 'pelican-academic'
 PATH = 'content'
 
+PLUGINS = [
+    'frontmark'
+]
+
 # Set this so autoreload will detect changes to templates
-STATIC_PATHS = ['images']
+STATIC_PATHS = ['images', 'css']
 
 LOAD_CONTENT_CACHE = False
 TIMEZONE = 'America/Los_Angeles'
@@ -32,14 +36,14 @@ ARTICLE_EXCLUDES = ['content/widgets']
 # EXTRA_TEMPLATES_PATHS = ['templates']
 # TEMPLATE_PAGES = {'pages/index.html': 'index.html'}
 
-def markdown_convert(input):
-    print input
-    return 'FOOOOO' + markdown.markdown(input)
-
-JINJA_FILTERS = {
-    'markdown': markdown_convert,
-    'upper': lambda input:input.upper()
-}
+# def markdown_convert(input):
+#     print input
+#     return 'FOOOOO' + markdown.markdown(input)
+#
+# JINJA_FILTERS = {
+#     'markdown': markdown_convert,
+#     'upper': lambda input:input.upper()
+# }
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
