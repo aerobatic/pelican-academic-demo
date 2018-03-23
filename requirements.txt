@@ -1,3 +1,19 @@
--e git+https://github.com/getpelican/pelican.git#egg=pelican
-https://github.com/joh/when-changed/archive/master.zip
-pelican-frontmark
+argh==0.26.2
+blinker==1.4
+CommonMark==0.7.5
+docutils==0.14
+feedgenerator==1.9
+future==0.16.0
+Jinja2==2.10
+MarkupSafe==1.0
+pathtools==0.1.2
+-e git+https://github.com/getpelican/pelican.git@0a49609f82190a7e5910255ee94402a07b195748#egg=pelican
+pelican-frontmark==1.1.0
+Pygments==2.2.0
+python-dateutil==2.7.0
+pytz==2018.3
+PyYAML==3.12
+six==1.11.0
+Unidecode==1.0.22
+watchdog==0.8.3
+when-changed==0.3.0

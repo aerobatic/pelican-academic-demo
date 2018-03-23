@@ -8,3 +8,4 @@ pyvenv.cfg
 pip-selfcheck.json
 bin
 lib
+__pycache__

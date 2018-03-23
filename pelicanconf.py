@@ -6,7 +6,7 @@
 
 AUTHOR = u'David Von Lehman'
 SITENAME = u'PELICAN ACADEMIC'
-SITEURL = ''
+SITEURL = '/'
 
 THEME = 'pelican-academic'
 PATH = 'content'
@@ -16,7 +16,7 @@ PLUGINS = [
 ]
 
 # Set this so autoreload will detect changes to templates
-STATIC_PATHS = ['images', 'css']
+STATIC_PATHS = ['images', 'css', 'js']
 
 LOAD_CONTENT_CACHE = False
 TIMEZONE = 'America/Los_Angeles'
@@ -64,8 +64,6 @@ SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
 
 DEFAULT_PAGINATION = 10
-
-GOOGLE_FONT="Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono"
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True

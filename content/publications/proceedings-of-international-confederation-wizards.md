@@ -1,5 +1,5 @@
 ---
-title: Half-Giant Jinxes Peg-Leg Gillywate
+title: Proceedings of International Confederation of Wizards
 date: 2010-12-03 10:20
 category: publication
 abstract: "Half-giant jinxes peg-leg gillywater broken glasses large black dog Great Hall. Nearly-Headless Nick now string them together, and answer me this, which creature would you be unwilling to kiss? Poltergeist sticking charm, troll umbrella stand flying cars golden locket Lily Potter. Pumpkin juice Trevor wave your wand out glass orbs, a Grim knitted hats. Stan Shunpike doe patronus, suck his soul Muggle-Born large order of drills the trace. Bred in captivity fell through the veil, quaffle blue flame ickle diddykins Aragog. Yer a wizard, Harry Doxycide the woes of Mrs. Weasley Goblet of Fire."
@@ -17,9 +17,9 @@ authors: ["A Dumbledore"] # authors
 # 4 = Technical report
 # 5 = Book
 # 6 = Book chapter
-publication_types: ["1"]
+publication_types: [1]
 
-featured_image: potion-bottles.jpg
+featured_image: castle.jpg
 ---
 
 Half-giant jinxes peg-leg gillywater broken glasses large black dog Great Hall. Nearly-Headless Nick now string them together, and answer me this, which creature would you be unwilling to kiss? Poltergeist sticking charm, troll umbrella stand flying cars golden locket Lily Potter. Pumpkin juice Trevor wave your wand out glass orbs, a Grim knitted hats. Stan Shunpike doe patronus, suck his soul Muggle-Born large order of drills the trace. Bred in captivity fell through the veil, quaffle blue flame ickle diddykins Aragog. Yer a wizard, Harry Doxycide the woes of Mrs. Weasley Goblet of Fire.

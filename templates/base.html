@@ -1,11 +1,12 @@
 {% extends "!theme/base.html" %}
 
-{% block head_end %}
-{#
-By default, intelligent system fonts are used. If you want ot use Google Fonts, uncomment below
-You would also need to override the body font style in the custom.css
-#}
-{# <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono"></link> #}
+{% block head %}
+  {{ super() }}
+  {#
+  By default, intelligent system fonts are used. If you want ot use Google Fonts, uncomment below
+  You would also need to override the body font style in the custom.css
+  #}
+  {# <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono"></link> #}
 
-<link rel="stylesheet" href="/css/custom.css"></link>
-{% endblock %}
+  <link rel="stylesheet" href="/css/custom.css"></link>
+{% endblock head %}
