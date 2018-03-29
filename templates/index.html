@@ -1,14 +1,17 @@
 {% extends "base.html" %}
-{% from "widgets/profile.html" import profile %}
-{% from "widgets/biography.html" import biography %}
-{% from "widgets/interests.html" import interests %}
-{% from "widgets/education.html" import education %}
-{% from "widgets/article_summary.html" import article_summary %}
+{% from "components/profile_metadata.html" import profile_metadata %}
+{% from "components/profile.html" import profile %}
+{% from "components/biography.html" import biography %}
+{% from "components/interests.html" import interests %}
+{% from "components/education.html" import education %}
+{% from "components/article_card_deck.html" import article_card_deck %}
 
 {% block head %}
   <title>{{ SITENAME }}</title>
   <meta name="description" content="">
   <meta name="author" content="{{ AUTHOR }}">
+  {{ profile_metadata(PROFILE_METADATA) }}
+
   {{ super() }}
 {% endblock %}
 
@@ -64,16 +67,13 @@
 
   <section id="publications_selected" class="home-section">
     <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-md-4 section-heading">
-          <h3>Selected Publications</h3>
-        </div>
-        <div class="col-xs-12 col-md-8">
-          {% for article in articles | selectattr('title', 'in', ('Proceedings of International Confederation of Wizards')) %}
-            {{article_summary(article)}}
-          {% endfor %}
-        </div>
+      <div class="section-heading">
+        <h3>Selected Publications</h3>
       </div>
+      {{ article_card_deck(articles | selectattr('slug', 'in', (
+        'study-interpretation-ancient-runes',
+        'proceedings-international-confedration-wizards'
+      )))}}
     </div>
   </section>
 {% endblock %}

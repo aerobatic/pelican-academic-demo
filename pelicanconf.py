@@ -12,11 +12,34 @@ THEME = 'pelican-academic'
 PATH = 'content'
 
 PLUGINS = [
-    'frontmark'
+    'md-metayaml',
+    'render_math',
+    'share_post'
 ]
+
+PLUGIN_PATHS=['plugins']
+
+JINJA_ENVIRONMENT = {
+    'trim_blocks': True,
+    'lstrip_blocks': True,
+    'extensions': ['jinja2.ext.do']
+}
+
+# Simple custom jinja filter for date formatting
+JINJA_FILTERS = {
+    'datetimeformat': lambda value, format : value.strftime(format)
+}
 
 # Set this so autoreload will detect changes to templates
 STATIC_PATHS = ['images', 'css', 'js']
+
+# Automatically assign the category of an article
+# based on the sub-folder of content
+USE_FOLDER_AS_CATEGORY = True
+
+ARTICLE_URL = '{category}/{slug}'
+ARTICLE_SAVE_AS = '{category}/{slug}.html'
+INDEX_SAVE_AS = 'index.html'
 
 LOAD_CONTENT_CACHE = False
 TIMEZONE = 'America/Los_Angeles'
@@ -28,7 +51,6 @@ THEME_TEMPLATES_OVERRIDES = ['templates']
 
 ARTICLE_EXCLUDES = ['content/widgets']
 
-# PLUGIN_PATHS = ['themes/pelican-academic/plugins']
 # PLUGIN_PATHS = ['pelican-plugins']
 # PLUGINS = ['jinja2content']
 
@@ -45,6 +67,20 @@ ARTICLE_EXCLUDES = ['content/widgets']
 #     'upper': lambda input:input.upper()
 # }
 
+# The PROFILE_METADATA is used both for JSON-LD metadata on
+# the site homepage and for the profile jinja2 component.
+# At a minimum you should specify "name". Beyond that, share
+# as little or as much as you wish. The full set of possible properties
+# can be found at: http://schema.org/Person in the JSON-LD tab.
+PROFILE_METADATA = {
+    'name': 'Albus Dumbledore',
+    'worksFor': {
+        'name': "Hogwart\'s School of Magic",
+        'location': ''
+    },
+    'jobTitle': 'Headmaster, Professor of Transfiguration'
+}
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
@@ -52,12 +88,6 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 FEED_ALL_ATOM = 'atom.xml'
-
-# Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
 
 # Social widget
 SOCIAL = (('You can add links in your config file', '#'),

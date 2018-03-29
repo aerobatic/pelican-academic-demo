@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% from "components/article_metadata.html" import article_metadata %}
-{% from "components/article_content.html" import article_content %}
-
+{% from "components/publication.html" import publication %}
 
 {% block head %}
   {{article_metadata(article)}}
@@ -12,5 +11,5 @@
 {% endblock %}
 
 {% block content %}
-  {{ article_content(article) }}
+  {{publication(article)}}
 {% endblock %}

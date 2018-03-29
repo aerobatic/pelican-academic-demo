@@ -7,6 +7,14 @@ Clone the demo repo
 git clone https://github.com/aerobatic/pelican-academic-demo.git pelican-academic-site
 ```
 
+<!--  http://nosferalatu.com/Pelican.html -->
+### Clone pelican-plugins
+
+```
+git clone https://github.com/getpelican/pelican-plugins.git plugins
+(cd plugins/md-metayaml; git submodule update --init)
+```
+
 Make sure Python3 is installed.
 
 On OSX with homebrew

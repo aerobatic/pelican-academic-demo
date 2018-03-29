@@ -23,3 +23,8 @@ DELETE_OUTPUT_DIRECTORY = True
 # changed
 #DISQUS_SITENAME = ""
 GOOGLE_ANALYTICS = "UA-XXXXX-Y"
+
+# Uncomment this to use extension-less urls on your hosting provider
+# Aerobatic automtically redirects /foo.html to /foo, so this saves
+# a redirect round-trip
+# FILE_EXTENSION = ""
