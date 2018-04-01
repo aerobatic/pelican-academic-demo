@@ -25,8 +25,6 @@
 {% endblock %}
 
 {% block content %}
-  <span id="homepage" style="display: none"></span>
-
   <section id="about" class="home-section">
     <div class="container">
       <div class="row">
@@ -65,7 +63,7 @@
     </div>
   </section>
 
-  <section id="publications_selected" class="home-section">
+  <section id="selected_publications" class="home-section">
     <div class="container">
       <div class="section-heading">
         <h3>Selected Publications</h3>
@@ -74,6 +72,18 @@
         'study-interpretation-ancient-runes',
         'proceedings-international-confedration-wizards'
       )))}}
+    </div>
+  </section>
+
+  <section id="selected_posts" class="home-section">
+    <div class="container">
+      <div class="section-heading">
+        <h3>Selected Posts</h3>
+      </div>
+      {{ article_card_deck(
+        articles = (articles | selectattr('category', 'equalto', 'post') | selectattr('is_selected', 'equalto', '1')),
+        site_url=SITEURL
+      )}}
     </div>
   </section>
 {% endblock %}

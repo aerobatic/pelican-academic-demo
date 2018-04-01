@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% from "components/category_content.html" import category_content %}
+
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+{% block banner %}
+{% endblock %}
+
+{% block content %}
+  {{ category_content(
+    category,
+    articles_page = articles_page,
+    category_headers = {
+      "publication": "Publications",
+      "post": "Blog Posts",
+      "project": "Projects"
+    },
+    site_url = SITEURL
+  )}}
+{% endblock %}

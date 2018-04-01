@@ -14,7 +14,8 @@ PATH = 'content'
 PLUGINS = [
     'md-metayaml',
     'render_math',
-    'share_post'
+    'share_post',
+    'liquid_tags.youtube'
 ]
 
 PLUGIN_PATHS=['plugins']
@@ -37,7 +38,9 @@ STATIC_PATHS = ['images', 'css', 'js']
 # based on the sub-folder of content
 USE_FOLDER_AS_CATEGORY = True
 
-ARTICLE_URL = '{category}/{slug}'
+# CATEGORY_URL = '{category}/index.html'
+# CATEGORY_SAVE_AS = '{category}/index.html'
+ARTICLE_URL = '{category}/{slug}.html'
 ARTICLE_SAVE_AS = '{category}/{slug}.html'
 INDEX_SAVE_AS = 'index.html'
 

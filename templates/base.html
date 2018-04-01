@@ -1,5 +1,7 @@
 {% extends "!theme/base.html" %}
 
+{% from "components/main_menu.html" import main_menu %}
+
 {% block head %}
   {{ super() }}
   {#
@@ -10,3 +12,42 @@
 
   <link rel="stylesheet" href="/css/custom.css"></link>
 {% endblock head %}
+
+<!-- Specify the links that should appear in the navbar main menu -->
+{% block navbar %}
+  {{ main_menu(
+    menu_items = [
+      {
+        "label": "Home",
+        "section": "about",
+      },
+      {
+        "label": "Publications",
+        "section": "selected_publications",
+        "category": "publication"
+      },
+      {
+        "label": "Posts",
+        "section": "selected_posts",
+        "category": "post"
+      },
+      {
+        "label": "Projects",
+        "section": "selected_projects",
+        "category": "project"
+      },
+      {
+        "label": "Teaching",
+        "section": "teaching"
+      },
+      {
+        "label": "Contact",
+        "section": "contact"
+      }
+    ],
+    page_name = page_name,
+    categories = categories,
+    show_search = true,
+    site_url = SITEURL
+  )}}
+{% endblock %}
