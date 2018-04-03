@@ -10,7 +10,11 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = ''
+# If deploying to Aerobatic, uncomment the line below. This is a special
+# placeholder that will be dynamically replaced at the time the page is served
+# with the actual domain name.
+SITEURL = 'https://__baseurl__'
+
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
@@ -28,4 +32,5 @@ GOOGLE_ANALYTICS = "UA-XXXXX-Y"
 # Aerobatic automtically redirects /foo.html to /foo, so this saves
 # a redirect round-trip
 ARTICLE_URL = '{category}/{slug}'
-CATEGORY_URL = '{category}/'
+CATEGORY_URL = '{slug}/'
+PAGE_URL = '{slug}'

@@ -28,7 +28,8 @@ JINJA_ENVIRONMENT = {
 
 # Simple custom jinja filter for date formatting
 JINJA_FILTERS = {
-    'datetimeformat': lambda value, format : value.strftime(format)
+    'datetimeformat': lambda value, format : value.strftime(format),
+    'isselected': lambda articles, category: [x for x in articles if x.category == category and x.is_selected == '1']
 }
 
 # Set this so autoreload will detect changes to templates
@@ -38,11 +39,13 @@ STATIC_PATHS = ['images', 'css', 'js']
 # based on the sub-folder of content
 USE_FOLDER_AS_CATEGORY = True
 
-# CATEGORY_URL = '{category}/index.html'
-# CATEGORY_SAVE_AS = '{category}/index.html'
 ARTICLE_URL = '{category}/{slug}.html'
 ARTICLE_SAVE_AS = '{category}/{slug}.html'
 INDEX_SAVE_AS = 'index.html'
+PAGE_SAVE_AS = '{slug}.html'
+PAGE_URL = '{slug}.html'
+CATEGORY_SAVE_AS = '{slug}/index.html'
+CATEGORY_URL = '{slug}/index.html'
 
 LOAD_CONTENT_CACHE = False
 TIMEZONE = 'America/Los_Angeles'
@@ -51,24 +54,8 @@ DEFAULT_LANG = u'en'
 
 THEME_TEMPLATES_OVERRIDES = ['templates']
 
-
-ARTICLE_EXCLUDES = ['content/widgets']
-
-# PLUGIN_PATHS = ['pelican-plugins']
-# PLUGINS = ['jinja2content']
-
-# DIRECT_TEMPLATES = ['index']
-# EXTRA_TEMPLATES_PATHS = ['templates']
-# TEMPLATE_PAGES = {'pages/index.html': 'index.html'}
-
-# def markdown_convert(input):
-#     print input
-#     return 'FOOOOO' + markdown.markdown(input)
-#
-# JINJA_FILTERS = {
-#     'markdown': markdown_convert,
-#     'upper': lambda input:input.upper()
-# }
+# Don't generate articles from the .md files in the homepage directory
+ARTICLE_EXCLUDES = ['homepage']
 
 # The PROFILE_METADATA is used both for JSON-LD metadata on
 # the site homepage and for the profile jinja2 component.
@@ -81,7 +68,8 @@ PROFILE_METADATA = {
         'name': "Hogwart\'s School of Magic",
         'location': ''
     },
-    'jobTitle': 'Headmaster, Professor of Transfiguration'
+    'jobTitle': 'Headmaster, Professor of Transfiguration',
+    'email': 'test@example.org'
 }
 
 # Feed generation is usually not desired when developing
@@ -91,6 +79,8 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 FEED_ALL_ATOM = 'atom.xml'
+
+TWITTER_USERNAME = 'aerobaticapp'
 
 # Social widget
 SOCIAL = (('You can add links in your config file', '#'),

@@ -29,8 +29,6 @@ help:
 	@echo '   make publish                        generate using production settings '
 	@echo '   make serve [PORT=8000]              serve site at http://localhost:8000'
 	@echo '   make serve-global [SERVER=0.0.0.0]  serve (as root) to $(SERVER):80    '
-	@echo '   make devserver [PORT=8000]          start/restart develop_server.sh    '
-	@echo '   make stopserver                     stop local server                  '
 	@echo '                                                                          '
 	@echo 'Set the DEBUG variable to 1 to enable debugging, e.g. make DEBUG=1 html   '
 	@echo 'Set the RELATIVE variable to 1 to enable relative urls                    '
@@ -45,24 +43,18 @@ clean:
 regenerate:
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
-# serve:
-# ifdef PORT
-# 	cd $(OUTPUTDIR) && $(PY) -m pelican.server $(PORT)
-# else
-# 	cd $(OUTPUTDIR) && $(PY) -m pelican.server
-# endif
+serve: clean html livereload
 
-serve-global:
-ifdef SERVER
-	cd $(OUTPUTDIR) && $(PY) -m pelican.server 80 $(SERVER)
-else
-	cd $(OUTPUTDIR) && $(PY) -m pelican.server 80 0.0.0.0
-endif
-
-serve:
+livereload:
 	$(PY) devserver.py $(PORT)
 
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
+
+publish-aerobatic: publish deploy-aerobatic
+
+# Deploy the site to Aerobatic
+deploy-aerobatic:
+	aero deploy --directory $(OUTPUTDIR)
 
 .PHONY: html help clean regenerate serve serve-global devserver stopserver publish

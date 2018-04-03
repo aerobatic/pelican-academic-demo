@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% from "components/profile_metadata.html" import profile_metadata %}
 {% from "components/profile.html" import profile %}
-{% from "components/biography.html" import biography %}
+{% from "components/content_block.html" import content_block %}
 {% from "components/interests.html" import interests %}
 {% from "components/education.html" import education %}
 {% from "components/article_card_deck.html" import article_card_deck %}
@@ -30,19 +30,19 @@
       <div class="row">
         <div class="col-md-4">
           {{ profile(
-            full_name="Albus Dumbledore",
-            job_title="Headmaster, Professor of Transfiguration",
-            works_for="Hogwarts School of Witchcraft & Wizardry",
+            full_name=PROFILE_METADATA.fullName,
+            job_title=PROFILE_METADATA.jobTitle,
+            works_for=PROFILE_METADATA.worksFor.name,
             email_address="test@example.org",
             network_urls={
               "google_scholar": "https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ",
-              "twitter": "https://twitter.com/aerobaticapp",
+              "twitter": "https://twitter.com/" + TWITTER_USERNAME,
               "github": "https://github.com/aerobatic/pelican-academic"
             }
           )}}
         </div>
         <div class="col-md-8">
-          {{ biography(articles, "biography")}}
+          {{ content_block("biography", articles=articles, heading="Biography") }}
           <div class="row">
             <div class="col-sm-6">
               {{ interests([
@@ -68,10 +68,7 @@
       <div class="section-heading">
         <h3>Selected Publications</h3>
       </div>
-      {{ article_card_deck(articles | selectattr('slug', 'in', (
-        'study-interpretation-ancient-runes',
-        'proceedings-international-confedration-wizards'
-      )))}}
+      {{ article_card_deck(articles | isselected('publication'), site_url=SITEURL) }}
     </div>
   </section>
 
@@ -80,10 +77,25 @@
       <div class="section-heading">
         <h3>Selected Posts</h3>
       </div>
-      {{ article_card_deck(
-        articles = (articles | selectattr('category', 'equalto', 'post') | selectattr('is_selected', 'equalto', '1')),
-        site_url=SITEURL
-      )}}
+      {{ article_card_deck(articles | isselected('post'), site_url=SITEURL) }}
+    </div>
+  </section>
+
+  <section id="selected_projects" class="home-section">
+    <div class="container">
+      <div class="section-heading">
+        <h3>Projects</h3>
+      </div>
+      {{ article_card_deck(articles | isselected('project'), site_url=SITEURL) }}
+    </div>
+  </section>
+
+  <section id="selected_projects" class="home-section">
+    <div class="container">
+      <div class="section-heading">
+        <h3>Teaching</h3>
+      </div>
+      {{ content_block("teaching", articles=articles) }}
     </div>
   </section>
 {% endblock %}

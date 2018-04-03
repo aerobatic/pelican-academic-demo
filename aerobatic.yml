@@ -1,0 +1,14 @@
+plugins:
+  - name: keyword-search
+    path: /search
+    method: get
+    options:
+      resultsTemplate: search.html
+      mustacheTags:
+        - <%=
+        - '%>'
+      titleStripEnd: " | PELICAN ACADEMIC"
+scanner:
+  keywordSearch: {}
+deploy: {}
+id: a6919ca7-6d1f-48c0-850c-63bdaf6aea58

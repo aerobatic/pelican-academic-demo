@@ -4,7 +4,13 @@
 
 
 {% block head %}
-  {{article_metadata(article)}}
+  {{ article_metadata(
+    article,
+    site_url=SITEURL,
+    site_name=SITENAME,
+    twitter_username=TWITTER_USERNAME
+  )}}
+
   {{ super() }}
 {% endblock %}
 

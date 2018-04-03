@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <title>Search Results | {{ SITENAME }}</title>
+
+  {{ super() }}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>Search Results</h2>
+    <div class="search-results">
+      <%= #searchResults %>
+      <div class="search-results__result">
+        <h3><a href="<%= &urlPath %>"><%= title %></a></h3>
+          <cite>{{fullUrl}}</cite>
+          <%= #snippet %>
+          <span class="snippet"><%= #date %><%= date %> - <%= /date %><%= &snippet %></span>
+          <%= /snippet %>
+        </div>
+      <%= /searchResults %>
+    </div>
+  </div>
+{% endblock %}
