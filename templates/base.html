@@ -1,6 +1,6 @@
 {% extends "!theme/base.html" %}
 
-{% from "components/main_menu.html" import main_menu %}
+{% from "components/top_bar.html" import top_bar %}
 
 {% block head %}
   {{ super() }}
@@ -15,7 +15,9 @@
 
 <!-- Specify the links that should appear in the navbar main menu -->
 {% block navbar %}
-  {{ main_menu(
+  {{ top_bar(
+    background_color = "#8a171a",
+    dark_background = True,
     menu_items = [
       {
         "label": "Home",
@@ -24,17 +26,17 @@
       {
         "label": "Publications",
         "section": "selected_publications",
-        "category": "publication"
+        "category": "publications"
       },
       {
         "label": "Posts",
         "section": "selected_posts",
-        "category": "post"
+        "category": "posts"
       },
       {
         "label": "Projects",
         "section": "selected_projects",
-        "category": "project"
+        "category": "projects"
       },
       {
         "label": "Teaching",
@@ -51,6 +53,7 @@
     category = category,
     article = article,
     show_search = true,
-    site_url = SITEURL
+    site_url = SITEURL,
+    site_name = SITENAME
   )}}
 {% endblock %}

@@ -8,9 +8,9 @@
 
 {% block head %}
   <title>{{ SITENAME }}</title>
-  <meta name="description" content="">
-  <meta name="author" content="{{ AUTHOR }}">
   {{ profile_metadata(PROFILE_METADATA) }}
+
+  <meta name="description" content="Personal academic site of {{ PROFILE_METADATA.fullName }}">
 
   {{ super() }}
 {% endblock %}
@@ -68,7 +68,7 @@
       <div class="section-heading">
         <h3>Selected Publications</h3>
       </div>
-      {{ article_card_deck(articles | isselected('publication'), site_url=SITEURL) }}
+      {{ article_card_deck(articles | isselected('publications'), site_url=SITEURL) }}
     </div>
   </section>
 
@@ -77,7 +77,7 @@
       <div class="section-heading">
         <h3>Selected Posts</h3>
       </div>
-      {{ article_card_deck(articles | isselected('post'), site_url=SITEURL) }}
+      {{ article_card_deck(articles | isselected('posts'), site_url=SITEURL) }}
     </div>
   </section>
 
@@ -86,11 +86,11 @@
       <div class="section-heading">
         <h3>Projects</h3>
       </div>
-      {{ article_card_deck(articles | isselected('project'), site_url=SITEURL) }}
+      {{ article_card_deck(articles | isselected('projects'), site_url=SITEURL) }}
     </div>
   </section>
 
-  <section id="selected_projects" class="home-section">
+  <section id="teaching" class="home-section">
     <div class="container">
       <div class="section-heading">
         <h3>Teaching</h3>

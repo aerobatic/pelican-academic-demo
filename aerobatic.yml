@@ -8,6 +8,11 @@ plugins:
         - <%=
         - '%>'
       titleStripEnd: " | PELICAN ACADEMIC"
+
+deploy:
+  directory: output
+  ignore: ["_block/**/*.*"]    
+
 scanner:
   keywordSearch: {}
 deploy: {}
